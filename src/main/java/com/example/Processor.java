@@ -1,17 +1,18 @@
 package com.example;
 
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Processor {
 
     private List<String> people;
     private Scanner scanner;
+    private Map<String, Set<Integer>> invertedIndexes;
 
-    public Processor(List<String> people, Scanner scanner) {
+    public Processor(List<String> people, Scanner scanner, Map<String, Set<Integer>> invertedIndexes) {
         this.people = people;
         this.scanner = scanner;
+        this.invertedIndexes = invertedIndexes;
     }
 
     public void runProgram() {
@@ -51,15 +52,19 @@ public class Processor {
     }
 
     private List<String> findPerson(String data) {
-        List<String> foundData = people.stream()
-                .filter(s -> s.toLowerCase().contains(data))
-                .collect(Collectors.toList());
+        Set<Integer> indexes = invertedIndexes.get(data);
 
-        return foundData;
+        if (indexes == null) {
+            return null;
+        }
+
+        return indexes.stream()
+                .map(i -> people.get(i))
+                .collect(Collectors.toList());
     }
 
     private void printData(List<String> data) {
-        if (data.size() == 0) {
+        if (data == null || data.size() == 0) {
             System.out.println("No matching people found.\n");
         } else {
             data.forEach(System.out::println);

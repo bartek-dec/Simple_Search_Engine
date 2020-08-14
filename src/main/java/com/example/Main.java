@@ -1,9 +1,7 @@
 package com.example;
 
 import java.io.File;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -24,8 +22,10 @@ public class Main {
         File file = new File(path + fileName);
         Reader dataReader = new DataReader();
         List<String> people = dataReader.readData(file);
+        InvertedIndex invertedIndex = new InvertedIndexImpl();
+        Map<String, Set<Integer>> indexes = invertedIndex.getInvertedIndexes(people);
 
-        Processor processor = new Processor(people, scanner);
+        Processor processor = new Processor(people, scanner, indexes);
         processor.runProgram();
 
     }
