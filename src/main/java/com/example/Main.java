@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.data.print.DataPrinter;
+import com.example.data.print.Printer;
 import com.example.data.process.InvertedIndex;
 import com.example.data.process.InvertedIndexImpl;
 import com.example.data.read.DataReader;
@@ -31,8 +33,9 @@ public class Main {
         InvertedIndex invertedIndex = new InvertedIndexImpl();
         Map<String, Set<Integer>> indexes = invertedIndex.getInvertedIndexes(people);
         StrategyFactory factory = new StrategyFactory();
+        Printer printer = new DataPrinter();
 
-        Processor processor = new Processor(people, scanner, indexes,factory);
+        Processor processor = new Processor(people, scanner, indexes, factory, printer);
         processor.runProgram();
 
     }

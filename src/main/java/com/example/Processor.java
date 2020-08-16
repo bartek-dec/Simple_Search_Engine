@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.data.print.Printer;
 import com.example.sort.Type;
 import com.example.sort.factory.StrategyFactory;
 import com.example.sort.strategy.SortingStrategy;
@@ -13,17 +14,20 @@ public class Processor {
     private Scanner scanner;
     private Map<String, Set<Integer>> invertedIndexes;
     private StrategyFactory factory;
+    private Printer printer;
 
-    public Processor(List<String> people, Scanner scanner, Map<String, Set<Integer>> invertedIndexes, StrategyFactory factory) {
+    public Processor(List<String> people, Scanner scanner, Map<String, Set<Integer>> invertedIndexes,
+                     StrategyFactory factory, Printer printer) {
         this.people = people;
         this.scanner = scanner;
         this.invertedIndexes = invertedIndexes;
         this.factory = factory;
+        this.printer = printer;
     }
 
     public void runProgram() {
         int menuItem;
-        String userInput;
+        List<String> userInput;
         Type type;
 
         do {
@@ -37,13 +41,13 @@ public class Processor {
                     SortingStrategy strategy = factory.getStrategy(type, invertedIndexes);
 
                     System.out.println("\nEnter a name or email to search all suitable people.");
-                    userInput = scanner.nextLine().toLowerCase().trim();
-                    List<String> foundPeople = findPerson(userInput);
-                    printData(foundPeople);
+                    userInput = List.of(scanner.nextLine().toLowerCase().split("\\s+"));
+                    List<String> foundPeople = strategy.sortPeople(userInput);
+                    printer.printData(foundPeople);
                     break;
                 case 2:
                     System.out.println("\n=== List of people ===");
-                    printData(people);
+                    printer.printData(people);
                 case 0:
                     break;
                 default:
@@ -92,14 +96,5 @@ public class Processor {
         return indexes.stream()
                 .map(i -> people.get(i))
                 .collect(Collectors.toList());
-    }
-
-    private void printData(List<String> data) {
-        if (data == null || data.size() == 0) {
-            System.out.println("No matching people found.\n");
-        } else {
-            data.forEach(System.out::println);
-            System.out.println("\n");
-        }
     }
 }
