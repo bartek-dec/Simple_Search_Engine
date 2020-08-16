@@ -1,5 +1,11 @@
 package com.example;
 
+import com.example.data.process.InvertedIndex;
+import com.example.data.process.InvertedIndexImpl;
+import com.example.data.read.DataReader;
+import com.example.data.read.Reader;
+import com.example.sort.factory.StrategyFactory;
+
 import java.io.File;
 import java.util.*;
 
@@ -24,8 +30,9 @@ public class Main {
         List<String> people = dataReader.readData(file);
         InvertedIndex invertedIndex = new InvertedIndexImpl();
         Map<String, Set<Integer>> indexes = invertedIndex.getInvertedIndexes(people);
+        StrategyFactory factory = new StrategyFactory();
 
-        Processor processor = new Processor(people, scanner, indexes);
+        Processor processor = new Processor(people, scanner, indexes,factory);
         processor.runProgram();
 
     }
