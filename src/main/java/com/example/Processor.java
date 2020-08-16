@@ -41,7 +41,7 @@ public class Processor {
                     SortingStrategy strategy = factory.getStrategy(type, invertedIndexes, people);
                     System.out.println("\nEnter a name or email to search all suitable people.");
 
-                    userInput = List.of(scanner.nextLine().toLowerCase().split("\\s+"));
+                    userInput = List.of(scanner.nextLine().split("\\s+"));
                     Context context = new Context();
                     List<String> foundPeople = context.sortPeople(strategy, userInput);
 
