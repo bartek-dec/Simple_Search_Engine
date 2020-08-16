@@ -18,7 +18,7 @@ public class InvertedIndexImpl implements InvertedIndex {
             int wordsQuantity = words.length;
 
             for (int j = 0; j < wordsQuantity; j++) {
-                String currentWord = words[j];
+                String currentWord = words[j].toLowerCase();
 
                 if (invertedIndexes.containsKey(currentWord)) {
                     Set<Integer> indexes = invertedIndexes.get(currentWord);

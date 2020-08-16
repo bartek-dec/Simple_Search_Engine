@@ -25,14 +25,14 @@ class InvertedIndexImplTest {
                 "Myrtle Medina", "Erick Burgess");
 
         expectedData = new HashMap<>();
-        expectedData.put("Katie", Set.of(0));
-        expectedData.put("Jacobs", Set.of(0));
-        expectedData.put("Erick", Set.of(1, 3));
-        expectedData.put("Harrington", Set.of(1));
+        expectedData.put("katie", Set.of(0));
+        expectedData.put("jacobs", Set.of(0));
+        expectedData.put("erick", Set.of(1, 3));
+        expectedData.put("harrington", Set.of(1));
         expectedData.put("harrington@gmail.com", Set.of(1));
-        expectedData.put("Myrtle", Set.of(2));
-        expectedData.put("Medina", Set.of(2));
-        expectedData.put("Burgess", Set.of(3));
+        expectedData.put("myrtle", Set.of(2));
+        expectedData.put("medina", Set.of(2));
+        expectedData.put("burgess", Set.of(3));
     }
 
     @Test
