@@ -51,4 +51,9 @@ class MatchAnyStrategyTest {
     void sortPeopleExpectedNull() {
         assertNull(strategy.sortPeople(List.of("qwerty")));
     }
+
+    @Test
+    void sortPeopleExpectedNullWhenPassedListNull() {
+        assertNull(strategy.sortPeople(null));
+    }
 }

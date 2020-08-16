@@ -15,6 +15,10 @@ public class MatchAnyStrategy implements SortingStrategy {
 
     @Override
     public List<String> sortPeople(List<String> list) {
+        if (list == null) {
+            return null;
+        }
+
         Set<String> foundPeople = new LinkedHashSet<>();
 
         for (String input : list) {
