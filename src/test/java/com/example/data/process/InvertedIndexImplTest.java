@@ -3,10 +3,7 @@ package com.example.data.process;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -24,10 +21,13 @@ class InvertedIndexImplTest {
         inputs = List.of("Katie Jacobs", "Erick Harrington harrington@gmail.com",
                 "Myrtle Medina", "Erick Burgess");
 
+        Set<Integer> integers = new LinkedHashSet<>();
+        integers.add(1);
+        integers.add(3);
         expectedData = new HashMap<>();
         expectedData.put("katie", Set.of(0));
         expectedData.put("jacobs", Set.of(0));
-        expectedData.put("erick", Set.of(1, 3));
+        expectedData.put("erick", integers);
         expectedData.put("harrington", Set.of(1));
         expectedData.put("harrington@gmail.com", Set.of(1));
         expectedData.put("myrtle", Set.of(2));
