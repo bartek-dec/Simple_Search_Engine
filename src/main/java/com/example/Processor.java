@@ -3,10 +3,10 @@ package com.example;
 import com.example.data.print.Printer;
 import com.example.sort.Type;
 import com.example.sort.factory.StrategyFactory;
+import com.example.sort.strategy.Context;
 import com.example.sort.strategy.SortingStrategy;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Processor {
 
@@ -38,11 +38,13 @@ public class Processor {
                 case 1:
                     type = getSortingType();
 
-                    SortingStrategy strategy = factory.getStrategy(type, invertedIndexes);
-
+                    SortingStrategy strategy = factory.getStrategy(type, invertedIndexes, people);
                     System.out.println("\nEnter a name or email to search all suitable people.");
+
                     userInput = List.of(scanner.nextLine().toLowerCase().split("\\s+"));
-                    List<String> foundPeople = strategy.sortPeople(userInput);
+                    Context context = new Context();
+                    List<String> foundPeople = context.sortPeople(strategy, userInput);
+
                     printer.printData(foundPeople);
                     break;
                 case 2:
@@ -84,17 +86,5 @@ public class Processor {
 
     private void displaySubmenu() {
         System.out.println("Select a matching strategy: ALL, ANY, NONE");
-    }
-
-    private List<String> findPerson(String data) {
-        Set<Integer> indexes = invertedIndexes.get(data);
-
-        if (indexes == null) {
-            return null;
-        }
-
-        return indexes.stream()
-                .map(i -> people.get(i))
-                .collect(Collectors.toList());
     }
 }
