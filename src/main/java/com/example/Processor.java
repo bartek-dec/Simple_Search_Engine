@@ -34,7 +34,7 @@ public class Processor {
                 case 1:
                     type = getSortingType();
 
-                    SortingStrategy strategy = factory.getStrategy(type);
+                    SortingStrategy strategy = factory.getStrategy(type, invertedIndexes);
 
                     System.out.println("\nEnter a name or email to search all suitable people.");
                     userInput = scanner.nextLine().toLowerCase().trim();

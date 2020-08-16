@@ -8,7 +8,7 @@ public class MatchAnyStrategy implements SortingStrategy {
 
     private Map<String, Set<Integer>> invertedIndexes;
 
-    public void setInvertedIndexes(Map<String, Set<Integer>> invertedIndexes) {
+    public MatchAnyStrategy(Map<String, Set<Integer>> invertedIndexes) {
         this.invertedIndexes = invertedIndexes;
     }
 
