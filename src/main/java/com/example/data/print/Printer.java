@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface Printer {
 
-    void printData(List<String> data);
+    String printData(List<String> data);
 }

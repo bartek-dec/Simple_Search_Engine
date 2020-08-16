@@ -45,11 +45,11 @@ public class Processor {
                     Context context = new Context();
                     List<String> foundPeople = context.sortPeople(strategy, userInput);
 
-                    printer.printData(foundPeople);
+                    System.out.println(printer.printData(foundPeople));
                     break;
                 case 2:
                     System.out.println("\n=== List of people ===");
-                    printer.printData(people);
+                    System.out.println(printer.printData(people));
                 case 0:
                     break;
                 default:
