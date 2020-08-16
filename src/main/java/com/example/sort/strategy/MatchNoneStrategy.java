@@ -1,8 +1,7 @@
 package com.example.sort.strategy;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class MatchNoneStrategy implements SortingStrategy {
 
@@ -16,6 +15,36 @@ public class MatchNoneStrategy implements SortingStrategy {
 
     @Override
     public List<String> sortPeople(List<String> list) {
-        return null;
+        if (list == null) {
+            return null;
+        }
+
+        Set<String> foundPeople = new LinkedHashSet<>();
+
+        for (String input : list) {
+            Set<Integer> indexes = invertedIndexes.get(input.toLowerCase());
+
+            if (indexes == null) {
+                continue;
+            }
+
+            List<String> findingsForCurrentIndexes = indexes.stream()
+                    .map(i -> people.get(i))
+                    .collect(Collectors.toList());
+
+            foundPeople.addAll(findingsForCurrentIndexes);
+        }
+
+        if (foundPeople.size() == 0) {
+            return people;
+        }
+
+        List<String> results = new ArrayList<>(people);
+        results.removeAll(foundPeople);
+
+        if (results.size() == 0) {
+            return null;
+        }
+        return results;
     }
 }
