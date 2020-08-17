@@ -1,10 +1,10 @@
 package com.example;
 
 import com.example.data.print.Printer;
-import com.example.sort.Type;
-import com.example.sort.factory.StrategyFactory;
-import com.example.sort.strategy.Context;
-import com.example.sort.strategy.SortingStrategy;
+import com.example.search.Type;
+import com.example.search.factory.StrategyFactory;
+import com.example.search.strategy.Context;
+import com.example.search.strategy.SortingStrategy;
 
 import java.util.*;
 
@@ -79,8 +79,8 @@ public class Processor {
 
     private void displayMenu() {
         System.out.println("=== Menu ===");
-        System.out.println("1. Find a person");
-        System.out.println("2. Print all people");
+        System.out.println("1. Find a word/phrase");
+        System.out.println("2. Print all data");
         System.out.println("0. Exit");
     }
 

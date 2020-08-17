@@ -1,4 +1,4 @@
-package com.example.sort.strategy;
+package com.example.search.strategy;
 
 import java.util.List;
 

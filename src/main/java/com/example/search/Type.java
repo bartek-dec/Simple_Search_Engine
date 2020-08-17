@@ -1,4 +1,4 @@
-package com.example.sort;
+package com.example.search;
 
 public enum Type {
     ALL("all"),

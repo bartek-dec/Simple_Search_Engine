@@ -1,10 +1,10 @@
-package com.example.sort.factory;
+package com.example.search.factory;
 
-import com.example.sort.Type;
-import com.example.sort.strategy.MatchAllStrategy;
-import com.example.sort.strategy.MatchAnyStrategy;
-import com.example.sort.strategy.MatchNoneStrategy;
-import com.example.sort.strategy.SortingStrategy;
+import com.example.search.Type;
+import com.example.search.strategy.MatchAllStrategy;
+import com.example.search.strategy.MatchAnyStrategy;
+import com.example.search.strategy.MatchNoneStrategy;
+import com.example.search.strategy.SortingStrategy;
 
 import java.util.List;
 import java.util.Map;

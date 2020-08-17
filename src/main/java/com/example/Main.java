@@ -6,7 +6,7 @@ import com.example.data.process.InvertedIndex;
 import com.example.data.process.InvertedIndexImpl;
 import com.example.data.read.DataReader;
 import com.example.data.read.Reader;
-import com.example.sort.factory.StrategyFactory;
+import com.example.search.factory.StrategyFactory;
 
 import java.io.File;
 import java.util.*;
@@ -35,7 +35,7 @@ public class Main {
             System.out.println("No data has been read from the file " + file.getName());
             return;
         }
-        
+
         InvertedIndex invertedIndex = new InvertedIndexImpl();
         Map<String, Set<Integer>> indexes = invertedIndex.getInvertedIndexes(people);
         StrategyFactory factory = new StrategyFactory();

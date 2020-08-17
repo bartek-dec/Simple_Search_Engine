@@ -1,4 +1,4 @@
-package com.example.sort.strategy;
+package com.example.search.strategy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
