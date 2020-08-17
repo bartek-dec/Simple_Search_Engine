@@ -30,6 +30,12 @@ public class Main {
         File file = new File(path + fileName);
         Reader dataReader = new DataReader();
         List<String> people = dataReader.readData(file);
+
+        if (people == null) {
+            System.out.println("No data has been read from the file " + file.getName());
+            return;
+        }
+        
         InvertedIndex invertedIndex = new InvertedIndexImpl();
         Map<String, Set<Integer>> indexes = invertedIndex.getInvertedIndexes(people);
         StrategyFactory factory = new StrategyFactory();
